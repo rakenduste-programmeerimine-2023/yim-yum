@@ -14,6 +14,7 @@
 - Retseptide filtreerimine tag-ide, hinnangu või nime järgi
 - Kasutajate profiilide vaatamine
 - Kasutajate profiilil kasutajate retseptide keskmise hinde nägemine
+- Lehe päises vahetuvad pildid viimase 5 uuema retsepti pildi vahel
 
 <h2>Funkstionaalsused registreerunud ja sisse loginud kasutajale</h2>
 - Uue retsepti postitamine(Retsepti nimetus, retsept, pilt, tag-id)
