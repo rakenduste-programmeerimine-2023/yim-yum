@@ -1,3 +1,35 @@
+<h1>YimYum</h1>
+
+<p>Veebilehel kuvatakse erinevaid retsepte, filtrist saab valida järgmist : hommikusöök, õhtusöök, lõuna, jook ja vastavalt toiduainetele. Kui kasutaja loob konto ja logib sisse on tal võimalik oma retsepti postitada ning olemasolevaid hinnata 5-palli süsteemis ja/või kommenteerida. Kasutaja näeb kui nende retsepte on kommenteeritud ja/või hinnatud.</p>
+
+<p>Autorid: Karl Vask, Egle Vestrik, Morten-Paul Mühlberg</p>
+
+<a href="https://www.figma.com/file/cWzAnLACW8SoSRqLuOoXAm/Untitled?type=design&node-id=0%3A1&mode=design&t=QvrhvLCjIcuNfWor-1"><h1>Wireframed</h1></a>
+
+<h1>Funktsionaalsused</h1>
+- Retseptide vaatamine
+- Kasutajaks registreerimine (Kasutajanimi, email, parool)
+- Enda kasutajasse sisse logimine
+- Retseptide otsimine
+- Retseptide filtreerimine tag-ide, hinnangu või nime järgi
+- Kasutajate profiilide vaatamine
+- Kasutajate profiilil kasutajate retseptide keskmise hinde nägemine
+
+<h2>Funkstionaalsused registreerunud ja sisse loginud kasutajale</h2>
+- Uue retsepti postitamine(Retsepti nimetus, retsept, pilt, tag-id)
+- Teiste retseptide hindamine
+- Enda ja teiste retseptidele kommentaaride lisamine
+
+<h2>Lisafunktsioonid, kui jõuame</h2>
+- Enda retsepti muutmine
+- Retsepti Facebooki, Twitterisse, Instagrami jagamine
+- Teistele kasutajatele sõnumite saatmine
+- Kui kasutaja retsept saab uue hinnagu või kommentaari, saab ta teate emailile
+
+
+
+
+
 <a href="https://demo-nextjs-with-supabase.vercel.app/">
   <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
   <h1 align="center">Next.js and Supabase Starter Kit</h1>
