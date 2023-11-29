@@ -27,21 +27,25 @@ const RecipeGrid = () => {
                 </Grid>
             ))}
         </Grid>
-    );
-};
+    )
+}
+
+const SearchBox = () => {
+
+    return (
+        <Stack spacing={2}>
+            <TextField></TextField>
+            <p>Cool text</p>
+            <p>Yippee</p>
+        </Stack>
+    )
+}
 
 
 export default async function Browse(){
     return (
         <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2}>
-            <Stack>
-                <TextField/>
-                <ul>
-                    <li>Placeholder</li>
-                    <li>Placeholder</li>
-                    <li>Placeholder</li>
-                </ul>
-            </Stack>
+            <SearchBox/>
             <RecipeGrid/>
         </Stack>
     )
