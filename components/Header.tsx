@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import OldHeader from "@/components/premade/OldHeader";
 import React from "react";
 
-export default async function Header() {
+export default function Header() {
     return (
         <p>Header placeholder</p>
     )
