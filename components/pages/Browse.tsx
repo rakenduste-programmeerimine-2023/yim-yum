@@ -8,7 +8,7 @@ const RecipeGrid = () => {
     const recipes = GenerateRecipes();
 
     return (
-        <Grid container spacing={2} maxWidth="600px" columns={4}>
+        <Grid container spacing={2} maxWidth="600px" columns={4} className={"bg-white"}>
             {recipes.map((recipe, index) => (
                 <Grid xs={1} key={index}>
                     <Card>
@@ -33,7 +33,7 @@ const RecipeGrid = () => {
 const SearchBox = () => {
 
     return (
-        <Stack spacing={2}>
+        <Stack spacing={2} className={"bg-white"}>
             <TextField></TextField>
             <p>Cool text</p>
             <p>Yippee</p>
