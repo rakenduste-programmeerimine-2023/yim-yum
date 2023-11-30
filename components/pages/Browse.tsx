@@ -1,14 +1,15 @@
 import Box from "@mui/material/Box";
-import {Card, CardContent, CardMedia, Divider, Stack, TextField, Typography} from "@mui/material";
+import {Card, CardContent, CardMedia, Divider, List, Stack, TextField, Typography} from "@mui/material";
 import Grid from "@mui/system/Unstable_Grid";
 import {GenerateRecipes} from "@/components/placeholders";
+import SearchBox from "@/components/SearchBox";
 
 
 const RecipeGrid = () => {
     const recipes = GenerateRecipes();
 
     return (
-        <Grid container spacing={2} maxWidth="600px" columns={4} className={"bg-white"}>
+        <Grid container spacing={2} maxWidth="600px" columns={4} className={"bg-white rounded-md"}>
             {recipes.map((recipe, index) => (
                 <Grid xs={1} key={index}>
                     <Card>
@@ -27,17 +28,6 @@ const RecipeGrid = () => {
                 </Grid>
             ))}
         </Grid>
-    )
-}
-
-const SearchBox = () => {
-
-    return (
-        <Stack spacing={2} className={"bg-white"}>
-            <TextField></TextField>
-            <p>Cool text</p>
-            <p>Yippee</p>
-        </Stack>
     )
 }
 
