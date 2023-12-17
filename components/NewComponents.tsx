@@ -6,6 +6,10 @@ export function KarlButton(props){
     if(props.variant == "outlined"){
         Style = "border-red-600 text-orange-800 hover:bg-red-600 hover:text-white";
     }
+    if(props.variant == "text"){
+        Style = "bg-white text-red-600";
+    }
+
     return (
         <Button className={Style} variant={props.variant}>{props.text}</Button>
     )
