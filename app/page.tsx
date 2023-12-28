@@ -4,12 +4,8 @@ import Navigation from "@/components/Navigation";
 import Header from "@/components/Header";
 import Box from '@mui/material/Box';
 import Browse from "@/components/pages/Browse";
-<<<<<<< HEAD
 import {Stack} from "@mui/material";
 import Login from "@/components/pages/Login";
-
-=======
->>>>>>> 24fc663 (css stiil lisatud, töötab, tehtav)
 
 export default async function Index() {
   const cookieStore = cookies()
