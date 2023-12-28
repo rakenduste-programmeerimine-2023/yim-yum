@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Browse from "@/components/pages/Browse";
 import {Stack} from "@mui/material";
 
+
 export default async function Index() {
   const cookieStore = cookies()
   return (
@@ -19,6 +20,5 @@ export default async function Index() {
               </Stack>
           </div>
       </div>
-
   )
 }
