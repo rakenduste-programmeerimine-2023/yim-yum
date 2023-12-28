@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Box from '@mui/material/Box';
 import Browse from "@/components/pages/Browse";
 import {Stack} from "@mui/material";
+import Login from "@/components/pages/Login";
 
 
 export default async function Index() {
@@ -16,7 +17,8 @@ export default async function Index() {
           <Header/>
           <div>
               <Stack direction={"row"} justifyContent={"center"}>
-                  <Browse/> {/*Later this will change depending on which page we are on*/}
+                  {/*<Browse/> /*Later this will change depending on which page we are on*/}
+                  <Login/>
               </Stack>
           </div>
       </div>
