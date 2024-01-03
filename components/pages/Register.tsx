@@ -17,7 +17,7 @@ export default async function Register(){
                 </Stack>
             <Stack direction="vertical">
                 <KarlButton variant="contained" text="Sign up!" className={"w-5/12"}/>
-                <Typography className={"pl-2 pt-2"}>Already an user? </Typography>
+                <Typography className={"pl-8 pt-2"}>Already an user? </Typography>
                 <KarlButton variant="smallText" className="m-0 pt-5" text="Log in"/>
             </Stack>
         </Stack>

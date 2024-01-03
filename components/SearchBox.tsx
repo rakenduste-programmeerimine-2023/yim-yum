@@ -73,9 +73,6 @@ function TagsList(props){
 }
 
 export default function SearchBox() {
-
-    //When I wrote this, only I and god knew what I was doing.
-    //Now only god knows.
     return (
         <Stack spacing={2} className={"bg-white p-3 rounded-md"}>
             <TextField variant="outlined" size="small" margin="normal" label="Search"/>

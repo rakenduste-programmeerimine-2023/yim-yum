@@ -7,6 +7,7 @@ import Browse from "@/components/pages/Browse";
 import {Stack} from "@mui/material";
 import Login from "@/components/pages/Login";
 import Register from "@/components/pages/Register";
+import ForgotPassword from "@/components/pages/ForgotPassword";
 
 export default async function Index() {
   const cookieStore = cookies()
@@ -18,8 +19,9 @@ export default async function Index() {
           <div>
               <Stack direction={"row"} justifyContent={"center"}>
                   {/*<Browse/> /*Later this will change depending on which page we are on
-                  <Login/> */}
-                  <Register/>
+                  <Login/>
+                  <Register/> */}
+                  <ForgotPassword/>
               </Stack>
           </div>
       </div>
