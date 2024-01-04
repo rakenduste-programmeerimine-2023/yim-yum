@@ -3,11 +3,10 @@ import {Divider, Stack, TextField, Typography} from "@mui/material";
 import {KarlButton} from "@/components/NewComponents";
 import React from "react";
 
-export default async function Login(){
+function LoginForm(){
     return (
-        <Stack spacing={2} direction="vertical" className={"bg-white p-3 rounded-md w-1/2"}>
+        <Stack direction={"row"}>
             <Stack spacing={2}>
-                <Typography className={"font-bold"} variant="h5">Welcome back!</Typography>
                 <TextField label="Email" size="small" id="email-input" color="warning"></TextField>
                 <TextField label="Password" size="small" id="password-input" color="warning" type="password"></TextField>
                 <KarlButton variant="contained" text="Sign in"/>
@@ -18,9 +17,18 @@ export default async function Login(){
                     <KarlButton variant="smallText" text="Sign up now!"/>
                 </Stack>
                 <Box>
-                    <KarlButton variant="smallText" text="Forgot your password?"/>
+                    <KarlButton variant="smallText" text="Forgot your password?" className={"pb-3"}/>
                 </Box>
             </Stack>
+        </Stack>
+    )
+}
+
+export default async function Login(){
+    return (
+        <Stack spacing={2} className={"bg-white p-3 rounded-md w-1/2"}>
+            <Typography className={"font-bold"} variant="h5">Welcome back!</Typography>
+            <LoginForm/>
         </Stack>
     )
 }
