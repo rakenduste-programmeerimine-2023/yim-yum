@@ -23,9 +23,8 @@ export default async function Index() {
                   <Login/>
                   <Register/>
                   <ForgotPassword/>
-                  <AddRecipe/>
-                  <AddRecipeLogIn/> */ }
-                  <Login/>
+                  <AddRecipe/> */ }
+                  <AddRecipeLogIn/>
               </Stack>
           </div>
       </div>

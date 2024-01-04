@@ -3,7 +3,7 @@ import {Divider, Stack, TextField, Typography} from "@mui/material";
 import {KarlButton} from "@/components/NewComponents";
 import React from "react";
 
-function LoginForm(){
+export function LoginForm(){
     return (
         <Stack direction={"row"}>
             <Stack spacing={2}>
