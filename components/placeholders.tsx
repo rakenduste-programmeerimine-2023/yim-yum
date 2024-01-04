@@ -13,3 +13,12 @@ export function GenerateRecipes(){
 
     return recipes;
 }
+
+export function GenerateRecipeData(){
+    return {
+        name: "Eggs",
+        imageURL: 'https://play-lh.googleusercontent.com/mB6gfPcoJPYzqCtk9ea1yrr0QbodjWSq9HNEmtPGwlaMToNqgplmWXTVKzcGC3qq-Ho=w240-h480-rw',
+        tags: ['breakfast', 'simple'],
+        recipeText: "-get an egg\n -break egg \n -cook egg \n -eat egg"
+    };
+}

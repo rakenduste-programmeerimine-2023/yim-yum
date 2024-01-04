@@ -9,6 +9,7 @@ import Register from "@/components/pages/Register";
 import ForgotPassword from "@/components/pages/ForgotPassword";
 import AddRecipe from "@/components/pages/AddRecipe";
 import AddRecipeLogIn from "@/components/pages/AddRecipeLogIn";
+import ViewRecipe from "@/components/pages/ViewRecipe";
 
 export default async function Index() {
   const cookieStore = cookies()
@@ -23,8 +24,9 @@ export default async function Index() {
                   <Login/>
                   <Register/>
                   <ForgotPassword/>
-                  <AddRecipe/> */ }
-                  <AddRecipeLogIn/>
+                  <AddRecipe/>
+                  <AddRecipeLogIn/>  */ }
+                  <ViewRecipe/>
               </Stack>
           </div>
       </div>
