@@ -2,12 +2,12 @@ import { cookies } from 'next/headers'
 import React from "react";
 import Navigation from "@/components/Navigation";
 import Header from "@/components/Header";
-import Box from '@mui/material/Box';
 import Browse from "@/components/pages/Browse";
 import {Stack} from "@mui/material";
 import Login from "@/components/pages/Login";
 import Register from "@/components/pages/Register";
 import ForgotPassword from "@/components/pages/ForgotPassword";
+import AddRecipe from "@/components/pages/AddRecipe";
 
 export default async function Index() {
   const cookieStore = cookies()
@@ -20,8 +20,9 @@ export default async function Index() {
               <Stack direction={"row"} justifyContent={"center"}>
                   {/*<Browse/> /*Later this will change depending on which page we are on
                   <Login/>
-                  <Register/> */}
-                  <ForgotPassword/>
+                  <Register/>
+                  <ForgotPassword/> */ }
+                  <AddRecipe/>
               </Stack>
           </div>
       </div>
