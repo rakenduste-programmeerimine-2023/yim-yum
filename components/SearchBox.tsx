@@ -1,5 +1,6 @@
 'use client'
 import {
+    Button,
     Checkbox,
     Collapse,
     IconButton,
@@ -12,10 +13,9 @@ import {
     TextField
 } from "@mui/material";
 import React from "react";
+import {KarlButton} from "@/components/NewComponents";
 
-
-
-export default function SearchBox() {
+function TagsList(props){
     const [open, setOpen] = React.useState(false);
     const [checked, setChecked] = React.useState([0]);
 
@@ -37,40 +37,48 @@ export default function SearchBox() {
     };
 
     return (
+        <List>
+            <ListItemButton onClick={handleClick}>
+                <ListItemText primary={props.name} />
+            </ListItemButton>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+                <List sx={{ width: '100%', maxWidth: 360}}>
+                    {[0, 1, 2, 3].map((value) => {
+                        const labelId = `checkbox-list-label-${value}`;
+
+                        return (
+                            <ListItem
+                                key={value}
+                                disablePadding
+                            >
+                                <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
+                                    <ListItemIcon>
+                                        <Checkbox
+                                            edge="start"
+                                            checked={checked.indexOf(value) !== -1}
+                                            tabIndex={-1}
+                                            disableRipple
+                                            inputProps={{ 'aria-labelledby': labelId }}
+                                        />
+                                    </ListItemIcon>
+                                    <ListItemText id={labelId} primary={`Tag ${value + 1}`} />
+                                </ListItemButton>
+                            </ListItem>
+                        );
+                    })}
+                </List>
+            </Collapse>
+        </List>
+    )
+}
+
+export default function SearchBox() {
+    return (
         <Stack spacing={2} className={"bg-white p-3 rounded-md"}>
             <TextField variant="outlined" size="small" margin="normal" label="Search"/>
-            <List>
-                <ListItemButton onClick={handleClick}>
-                    <ListItemText primary="Tags" />
-                </ListItemButton>
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List sx={{ width: '100%', maxWidth: 360}}>
-                        {[0, 1, 2, 3].map((value) => {
-                            const labelId = `checkbox-list-label-${value}`;
-
-                            return (
-                                <ListItem
-                                    key={value}
-                                    disablePadding
-                                >
-                                    <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
-                                        <ListItemIcon>
-                                            <Checkbox
-                                                edge="start"
-                                                checked={checked.indexOf(value) !== -1}
-                                                tabIndex={-1}
-                                                disableRipple
-                                                inputProps={{ 'aria-labelledby': labelId }}
-                                            />
-                                        </ListItemIcon>
-                                        <ListItemText id={labelId} primary={`Tag ${value + 1}`} />
-                                    </ListItemButton>
-                                </ListItem>
-                            );
-                        })}
-                    </List>
-                </Collapse>
-            </List>
+            <TagsList name="Tags"/>
+            <TagsList name="Ingredients"/>
+            <KarlButton variant="outlined" text={"Search"}/>
         </Stack>
     )
 }
