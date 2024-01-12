@@ -14,21 +14,6 @@ import ViewRecipe from "@/components/pages/ViewRecipe";
 export default async function Index() {
   const cookieStore = cookies()
   return (
-      <div className={"w-full"}>
-          <Navigation/>
-
-          <Header/>
-          <div>
-              <Stack direction={"row"} justifyContent={"center"}>
-                  {/*<Browse/> /*Later this will change depending on which page we are on
-                  <Login/>
-                  <Register/>
-                  <ForgotPassword/>
-                  <AddRecipe/>
-                  <AddRecipeLogIn/>  */ }
-                  <ViewRecipe/>
-              </Stack>
-          </div>
-      </div>
+      <Browse/>
   )
 }
