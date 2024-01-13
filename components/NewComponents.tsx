@@ -21,6 +21,6 @@ export function KarlButton(props){
     }
 
     return (
-        <Button className={Style + " " + props.className} variant={props.variant} onClick={props.onClick}>{props.text}</Button>
+        <Button className={Style + " " + props.className} variant={props.variant} onClick={props.onClick} type={props.type}>{props.text}</Button>
     )
 }
