@@ -17,10 +17,6 @@ export default async function Register(){
         const cookieStore = cookies()
         const supabase = createClient(cookieStore)
 
-        console.log("Email: " + email)
-        console.log("Password: " + password)
-        console.log("Username: " + username)
-
         const { data, error } = await supabase.auth.signUp({
             email,
             password,

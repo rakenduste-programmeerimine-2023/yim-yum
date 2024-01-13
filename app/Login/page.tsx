@@ -3,25 +3,52 @@ import {Divider, Stack, TextField, Typography} from "@mui/material";
 import {KarlButton} from "@/components/NewComponents";
 import React from "react";
 import Link from "next/link";
+import {cookies} from "next/headers";
+import {createClient} from "@/utils/supabase/server";
+import {redirect} from "next/navigation";
 
 export function LoginForm(){
+    const signIn = async (formData: FormData) => {
+        'use server'
+
+        const email = formData.get('Email-input') as string
+        const password = formData.get('Password-input') as string
+        const cookieStore = cookies()
+        const supabase = createClient(cookieStore)
+
+        console.log("Email: " + email + "\nPassword: " + password)
+
+        const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        })
+
+        if (error) {
+            return console.log(error)
+        }
+
+        return redirect('/')
+    }
+
     return (
-        <Stack direction={"row"}>
-            <Stack spacing={2}>
-                <TextField label="Email" size="small" id="email-input" color="warning"></TextField>
-                <TextField label="Password" size="small" id="password-input" color="warning" type="password"></TextField>
-                <KarlButton variant="contained" text="Sign in"/>
-            </Stack>
-            <Stack spacing={1} justifyContent={"flex-end"} className={"pl-4"}>
-                <Stack spacing={0} direction="vertical">
-                    <Typography>Not an user yet?</Typography>
-                    <Link href={"/Register"}><KarlButton variant="smallText" text="Sign up now!"/></Link>
+        <form action={signIn}>
+            <Stack direction={"row"}>
+                <Stack spacing={2}>
+                    <TextField name="Email-input" size="small" color="warning"></TextField>
+                    <TextField name="Password-input" size="small" color="warning" type="password"></TextField>
+                    <KarlButton variant="contained" text="Sign in" type={"submit"}/>
                 </Stack>
-                <Box>
-                    <Link href={"/ForgotPassword"}><KarlButton variant="smallText" text="Forgot your password?" className={"pb-3"}/></Link>
-                </Box>
+                <Stack spacing={1} justifyContent={"flex-end"} className={"pl-4"}>
+                    <Stack spacing={0} direction="vertical">
+                        <Typography>Not an user yet?</Typography>
+                        <Link href={"/Register"}><KarlButton variant="smallText" text="Sign up now!"/></Link>
+                    </Stack>
+                    <Box>
+                        <Link href={"/ForgotPassword"}><KarlButton variant="smallText" text="Forgot your password?" className={"pb-3"}/></Link>
+                    </Box>
+                </Stack>
             </Stack>
-        </Stack>
+        </form>
     )
 }
 
