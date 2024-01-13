@@ -16,8 +16,6 @@ export function LoginForm(){
         const cookieStore = cookies()
         const supabase = createClient(cookieStore)
 
-        console.log("Email: " + email + "\nPassword: " + password)
-
         const { error } = await supabase.auth.signInWithPassword({
             email,
             password,

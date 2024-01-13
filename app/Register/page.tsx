@@ -6,6 +6,7 @@ import Link from "next/link";
 import {createClient} from "@/utils/supabase/server";
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
+import {name} from "ts-interface-checker";
 
 export default async function Register(){
     const register = async (formData: FormData) => {
@@ -29,6 +30,13 @@ export default async function Register(){
 
         if (error) {
             return console.log(error)
+        }
+
+        if(!error) {
+            const { databaseError } = await supabase.from('User').insert({name: username, email: email})
+            if(databaseError){
+                return console.log(databaseError);
+            }
         }
 
         return redirect('/')
