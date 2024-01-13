@@ -36,6 +36,7 @@ export default async function Register(){
             const { databaseError } = await supabase.from('User').insert({name: username, email: email})
             if(databaseError){
                 return console.log(databaseError);
+                //I have just discovered there is a much easier way to do this, but it works so whatever
             }
         }
 
