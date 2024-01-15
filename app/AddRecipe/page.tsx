@@ -1,7 +1,6 @@
 import {Button, Stack, TextField, Typography} from "@mui/material";
 import {KarlButton} from "@/components/NewComponents";
 import React from "react";
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Box from "@mui/material/Box";
 
 

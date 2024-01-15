@@ -32,8 +32,8 @@ export function LoginForm(){
         <form action={signIn}>
             <Stack direction={"row"}>
                 <Stack spacing={2}>
-                    <TextField name="Email-input" size="small" color="warning"></TextField>
-                    <TextField name="Password-input" size="small" color="warning" type="password"></TextField>
+                    <TextField name="Email-input" placeholder="Email" size="small" color="warning"></TextField>
+                    <TextField name="Password-input" placeholder="Password" size="small" color="warning" type="password"></TextField>
                     <KarlButton variant="contained" text="Sign in" type={"submit"}/>
                 </Stack>
                 <Stack spacing={1} justifyContent={"flex-end"} className={"pl-4"}>
