@@ -7,6 +7,7 @@ import {Divider, Paper, Stack, Typography} from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/system/Unstable_Grid";
 import SearchBox from "@/components/SearchBox";
+import Link from "next/link";
 
 export default async function Index() {
     const cookieStore = cookies();
@@ -25,17 +26,19 @@ export default async function Index() {
 
     const { data: recipes } = await supabase.from('recipe').select('id, name, creator_id, cumulative_rating, imageurl, creator_name', { count: 'exact' }).eq('visible', 'TRUE')
     return (
-    <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2}>
+    <Stack direction="row" className={"w-3/4"} divider={<Divider orientation="vertical" flexItem />} spacing={2}>
         <SearchBox/>
         <Grid container spacing={3}>
             {recipes?.map((recipe) => (
-            <Grid item xs={12} sm={6} md={4} key={recipe.id}>
-                <Paper>
-                    <img src={recipe.imageurl} alt={recipe.name} style={{ width: '100%' }} />
-                    <Typography variant="h6">{recipe.name}</Typography>
-                    <Typography variant="body2">Creator: {recipe.creator_name}</Typography>
-                    <Typography variant="body2">Cumulative Rating: {recipe.cumulative_rating}</Typography>
-                </Paper>
+            <Grid item xs={4} sm={2} key={recipe.id}>
+                <Link href={'/'}>
+                <Box className={"bg-white rounded-lg"}>
+                    <Typography className={"font-bold text-lg p-2"}>{recipe.name}</Typography>
+                    <img className={"w-full h-2/3 rounded shadow-xl"} src={recipe.imageurl} alt={recipe.name}/>
+                    <Typography className={"p-1"}>Creator: {recipe.creator_name}</Typography>
+                    <Typography className={"text-sm p-1"}>Rating: {recipe.cumulative_rating}</Typography>
+                </Box>
+                </Link>
             </Grid>
             ))}
         </Grid>
