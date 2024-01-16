@@ -2,7 +2,7 @@
 
 <p>Veebilehel kuvatakse erinevaid retsepte, filtrist saab valida järgmist : hommikusöök, õhtusöök, lõuna, jook ja vastavalt toiduainetele. Kui kasutaja loob konto ja logib sisse on tal võimalik oma retsepti postitada ning olemasolevaid hinnata 5-palli süsteemis ja/või kommenteerida. Kasutaja näeb kui nende retsepte on kommenteeritud ja/või hinnatud.</p>
 
-<p>Autorid: Karl Vask, Egle Vestrik, Morten-Paul Mühlberg</p>
+<p>Autor: Karl Vask</p>
 
 <a href="https://www.figma.com/file/cWzAnLACW8SoSRqLuOoXAm/Untitled?type=design&node-id=0%3A1&mode=design&t=QvrhvLCjIcuNfWor-1"><h1>Wireframed</h1></a>
 
