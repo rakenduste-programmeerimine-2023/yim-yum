@@ -12,26 +12,6 @@ import {Stack, TextField, Typography} from "@mui/material";
 const cookieStore = cookies();
 const supabase = createServerComponentClient({ cookies: () => cookieStore });
 
-
-async function AddRecipe(){
-    return (
-        <Stack spacing={2} className={"bg-white p-3 rounded-md w-2/3"}>
-            <Stack spacing={2} className={"w-11/12"}>
-                <Typography className={"font-bold"} variant="h5">Add a new recipe!</Typography>
-                <TextField label="Recipe name" id="RecipeName" size="small" required color="warning"/>
-                <TextField label="Add tags" id="RecipeTags" size="small" color="warning"/>
-                <Box></Box>
-                <TextField label="Recipe image URL" id="RecipeImageURL" size="small" color="warning"/>
-                <TextField multiline required label="Recipe text" id="RecipeText" color="warning" minRows={5}/>
-                <Box className={"space-x-5"}>
-                    <KarlButton variant="contained" text="Publish recipe"/>
-                    <KarlButton variant="outlined" text="Save as a draft"/>
-                </Box>
-            </Stack>
-        </Stack>
-    )
-}
-
 export default async function AddRecipePage(){
     const {
         data: { user },
@@ -41,16 +21,54 @@ export default async function AddRecipePage(){
         data: { session },
     } = await supabase.auth.getSession();
 
+    let userID: any;
+
+    console.log(user?.email)
+
     if(user != null){
-        const { data: { username }, error } = await supabase
+        const { data, error } = await supabase
             .from('User')
-            .select('name').eq('email', user.email)
+            .select('id').eq('email', user.email)
             .limit(1)
             .single()
+        userID = data.id;
+        console.log(userID)
+    }
+
+    const AddRecipeToDB = async (formData: FormData) => {
+        "use server"
+        const creatorID = userID;
+        const recipeName = formData.get('RecipeName') as string
+        const tags = formData.get('RecipeTags') as string
+        const imageURL = formData.get('RecipeImageURL') as string
+        const recipeText = formData.get('RecipeText') as string
+
+        const{data, error} = await supabase.from('recipe').insert(
+            {name: recipeName, creator_id: userID, imageurl: imageURL, recipetext: recipeText})
+
+        if(error){
+            return console.log(error);
+        }
+
+        return redirect('/')
     }
 
     return session && user ? (
-        <AddRecipe/>
+        <Stack spacing={2} className={"bg-white p-3 rounded-md w-2/3"}>
+            <Stack spacing={2} className={"w-11/12"}>
+                <Typography className={"font-bold"} variant="h5">Add a new recipe!</Typography>
+                <form className={"space-y-4"} action={AddRecipeToDB}>
+                    <TextField className={"w-full"} placeholder="Recipe name" name="RecipeName" size="small" required color="warning"/>
+                    <TextField className={"w-full"} placeholder="Add tags" name="RecipeTags" size="small" color="warning"/>
+                    <TextField className={"w-full"} placeholder="Recipe image URL" name="RecipeImageURL" size="small" color="warning"/>
+                    <TextField className={"w-full"} required placeholder="Recipe text" name="RecipeText" size="small" color="warning" minRows={5}/>
+                    <Box className={"space-x-5"}>
+                        <KarlButton variant="contained" type="submit" text="Publish recipe"/>
+                        <KarlButton variant="outlined" text="Save as a draft"/>
+                    </Box>
+                </form>
+            </Stack>
+        </Stack>
     ) : (
         <AddRecipeLogIn/>
     )
