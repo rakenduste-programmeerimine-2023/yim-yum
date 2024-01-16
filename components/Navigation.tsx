@@ -5,6 +5,7 @@ import {cookies} from "next/headers";
 import {createServerComponentClient} from "@supabase/auth-helpers-nextjs";
 import {createClient} from "@/utils/supabase/server";
 import {redirect} from "next/navigation";
+import {name} from "ts-interface-checker";
 
 async function UserStatus(){
     const cookieStore = cookies();
@@ -18,6 +19,20 @@ async function UserStatus(){
         data: { session },
     } = await supabase.auth.getSession();
 
+    let username;
+
+    if(user != null){
+        const { data, error } = await supabase
+            .from('User')
+            .select('name').eq('email', user.email)
+            .limit(1)
+            .single()
+        username = data;
+    }
+    else {
+        username = "test";
+    }
+
     const signOut = async () => {
         "use server";
 
@@ -29,6 +44,7 @@ async function UserStatus(){
 
     return session && user ? (
             <Stack direction={"row"} spacing={2}>
+                <Typography className={"pt-1 font-bold text-red-700"}>Hi { username.name }!</Typography>
                 <Link href={"/Login"}><KarlButton variant="text" text="My profile"/></Link>
                 <form action={signOut}>
                     <KarlButton variant="text" type="submit" text="Log out"/>

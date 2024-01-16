@@ -3,8 +3,6 @@ import {KarlButton} from "@/components/NewComponents";
 import React from "react";
 import Box from "@mui/material/Box";
 
-
-
 export default async function AddRecipe(){
     return (
         <Stack spacing={2} className={"bg-white p-3 rounded-md w-2/3"}>
