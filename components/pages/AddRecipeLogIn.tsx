@@ -2,7 +2,7 @@ import {Stack, TextField, Typography} from "@mui/material";
 import Box from "@mui/material/Box";
 import {KarlButton} from "@/components/NewComponents";
 import React from "react";
-import Login, {LoginForm} from "@/components/pages/Login";
+import {LoginForm} from "@/app/Login/page";
 
 export default async function AddRecipeLogIn(){
     return (

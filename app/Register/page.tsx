@@ -33,6 +33,7 @@ export default async function Register(){
         }
 
         if(!error) {
+            // @ts-ignore
             const { databaseError } = await supabase.from('User').insert({name: username, email: email})
             if(databaseError){
                 return console.log(databaseError);

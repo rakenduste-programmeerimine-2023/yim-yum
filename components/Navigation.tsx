@@ -1,4 +1,4 @@
-import {Button, Stack, Typography} from "@mui/material";
+import {Stack, Typography} from "@mui/material";
 import {KarlButton} from "@/components/NewComponents";
 import Link from "next/link";
 import {cookies} from "next/headers";
@@ -24,12 +24,11 @@ async function UserStatus(){
         const cookieStore = cookies();
         const supabase = createClient(cookieStore);
         await supabase.auth.signOut();
-        return redirect("/");
+        return redirect("/Login");
     };
 
     return session && user ? (
             <Stack direction={"row"} spacing={2}>
-                <Typography>Hi {user.email}!</Typography>
                 <Link href={"/Login"}><KarlButton variant="text" text="My profile"/></Link>
                 <form action={signOut}>
                     <KarlButton variant="text" type="submit" text="Log out"/>
