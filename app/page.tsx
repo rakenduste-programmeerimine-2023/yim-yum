@@ -30,9 +30,9 @@ export default async function Index() {
         <SearchBox/>
         <Grid container spacing={3}>
             {recipes?.map((recipe) => (
-            <Grid item xs={4} sm={2} key={recipe.id}>
+            <Grid item xs={4} key={recipe.id}>
                 <Link href={'/'}>
-                <Box className={"bg-white rounded-lg"}>
+                <Box className={"bg-white rounded-lg py-3"}>
                     <Typography className={"font-bold text-lg p-2"}>{recipe.name}</Typography>
                     <img className={"w-full h-2/3 rounded shadow-xl"} src={recipe.imageurl} alt={recipe.name}/>
                     <Typography className={"p-1"}>Creator: {recipe.creator_name}</Typography>

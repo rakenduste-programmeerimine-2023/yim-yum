@@ -8,6 +8,7 @@ import {redirect} from "next/navigation";
 import Link from "next/link";
 import AddRecipeLogIn from "@/components/pages/AddRecipeLogIn";
 import {Stack, TextField, Typography} from "@mui/material";
+import {GetUsername} from "@/components/Navigation";
 
 const cookieStore = cookies();
 const supabase = createServerComponentClient({ cookies: () => cookieStore });
@@ -37,14 +38,14 @@ export default async function AddRecipePage(){
 
     const AddRecipeToDB = async (formData: FormData) => {
         "use server"
-        const creatorID = userID;
         const recipeName = formData.get('RecipeName') as string
         const tags = formData.get('RecipeTags') as string
         const imageURL = formData.get('RecipeImageURL') as string
         const recipeText = formData.get('RecipeText') as string
+        const userName = (await GetUsername()).username.name
 
         const{data, error} = await supabase.from('recipe').insert(
-            {name: recipeName, creator_id: userID, imageurl: imageURL, recipetext: recipeText})
+            {name: recipeName, imageurl: imageURL, recipetext: recipeText, creator_name: userName})
 
         if(error){
             return console.log(error);

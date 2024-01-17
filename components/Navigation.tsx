@@ -7,6 +7,8 @@ import {createClient} from "@/utils/supabase/server";
 import {redirect} from "next/navigation";
 import {name} from "ts-interface-checker";
 
+let username;
+
 async function UserStatus(){
     const cookieStore = cookies();
     const supabase = createServerComponentClient({ cookies: () => cookieStore });
@@ -19,7 +21,6 @@ async function UserStatus(){
         data: { session },
     } = await supabase.auth.getSession();
 
-    let username;
 
     if(user != null){
         const { data, error } = await supabase
@@ -56,6 +57,10 @@ async function UserStatus(){
                 <Link href={"/Login"}><KarlButton variant="text" text="Sign in"/></Link>
             </Stack>
         )
+    }
+
+    export async function GetUsername(){
+        return {username};
     }
 
 export default async function Navigation(){
