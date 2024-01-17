@@ -9,6 +9,7 @@ import Link from "next/link";
 import AddRecipeLogIn from "@/components/pages/AddRecipeLogIn";
 import {Stack, TextField, Typography} from "@mui/material";
 import {GetUsername} from "@/components/Navigation";
+import {LoginForm} from "@/app/Login/page";
 
 const cookieStore = cookies();
 const supabase = createServerComponentClient({ cookies: () => cookieStore });
@@ -59,10 +60,10 @@ export default async function AddRecipePage(){
             <Stack spacing={2} className={"w-11/12"}>
                 <Typography className={"font-bold"} variant="h5">Add a new recipe!</Typography>
                 <form className={"space-y-4"} action={AddRecipeToDB}>
-                    <TextField className={"w-full"} placeholder="Recipe name" name="RecipeName" size="small" required color="warning"/>
-                    <TextField className={"w-full"} placeholder="Add tags" name="RecipeTags" size="small" color="warning"/>
-                    <TextField className={"w-full"} placeholder="Recipe image URL" name="RecipeImageURL" size="small" color="warning"/>
-                    <TextField className={"w-full"} required placeholder="Recipe text" name="RecipeText" size="small" color="warning" minRows={5}/>
+                    <input type="text" className={"w-full border rounded border-slate-300 text-lg indent-2"} required placeholder="Recipe name" name="RecipeName"/>
+                    <input type="text" className={"w-full border rounded border-slate-300 text-lg indent-2"} placeholder="Add tags" name="RecipeTags"/>
+                    <input type="text" className={"w-full border rounded border-slate-300 text-lg indent-2"} required placeholder="Recipe image URL" name="RecipeImageURL"/>
+                    <textarea className={"w-full border rounded border-slate-300 text-lg indent-2"} required placeholder="Recipe text" name="RecipeText" rows="5" cols="50"/>
                     <Box className={"space-x-5"}>
                         <KarlButton variant="contained" type="submit" text="Publish recipe"/>
                         <KarlButton variant="outlined" text="Save as a draft"/>
@@ -71,6 +72,9 @@ export default async function AddRecipePage(){
             </Stack>
         </Stack>
     ) : (
-        <AddRecipeLogIn/>
+        <Stack spacing={2} className={"bg-white p-3 rounded-md w-2/3 items-center"}>
+            <Typography className={"font-bold"} variant="h5">You need to be a signed-in user to add a new recipe!</Typography>
+            <LoginForm/>
+        </Stack>
     )
 }

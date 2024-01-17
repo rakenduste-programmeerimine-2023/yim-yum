@@ -24,7 +24,10 @@ export default async function Index() {
 
     const isSupabaseConnected = canInitSupabaseClient();
 
-    const { data: recipes } = await supabase.from('recipe').select('id, name, creator_id, cumulative_rating, imageurl, creator_name', { count: 'exact' }).eq('visible', 'TRUE')
+    const { data: recipes, error } = await supabase.from('recipe').select('id, name, cumulative_rating, imageurl, creator_name', { count: 'exact' }).eq('visible', 'TRUE')
+    if(error != null){
+        console.log(error)
+    }
     return (
     <Stack direction="row" className={"w-3/4"} divider={<Divider orientation="vertical" flexItem />} spacing={2}>
         <SearchBox/>
